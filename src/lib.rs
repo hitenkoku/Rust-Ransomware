@@ -167,12 +167,12 @@ pub fn check_process() -> bool {
     let mut found_processes: Vec<&str> = Vec::new();
     for process in current_processes.iter() {
         for sandbox_process in sandbox_processes.iter() {
-            if &(process.to_lowercase()) == &(sandbox_process.to_lowercase()) {
+            if process.to_lowercase() == sandbox_process.to_lowercase() {
                 found_processes.push(sandbox_process);
             }
         }
     }
-    if found_processes.len() != 0 {
+    if !found_processes.is_empty() {
         return true;
     }
     false

